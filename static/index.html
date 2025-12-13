@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>فحص الالتهاب الرئوي بالذكاء الاصطناعي</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" class="lungs-icon">
+                        <path d="M50 20 C40 20 35 30 35 45 C35 60 40 75 50 80 C60 75 65 60 65 45 C65 30 60 20 50 20" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M35 45 C25 40 15 45 15 60 C15 75 25 85 40 85" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <path d="M65 45 C75 40 85 45 85 60 C85 75 75 85 60 85" fill="none" stroke="currentColor" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h1 class="title">PneumoScan AI</h1>
+            </div>
+            <p class="subtitle">تحليل صور الأشعة السينية للكشف عن الالتهاب الرئوي بالذكاء الاصطناعي</p>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                            <polyline points="17 8 12 3 7 8"/>
+                            <line x1="12" y1="3" x2="12" y2="15"/>
+                        </svg>
+                    </div>
+                    <h3>اسحب وأفلت صورة الأشعة هنا</h3>
+                    <p>أو انقر لاختيار ملف</p>
+                    <input type="file" id="fileInput" accept="image/*" hidden>
+                </div>
+
+                <div class="preview-section" id="previewSection" style="display: none;">
+                    <div class="image-preview">
+                        <img id="previewImage" src="" alt="Preview">
+                    </div>
+                    <div class="preview-actions">
+                        <button class="btn btn-primary" id="analyzeBtn">
+                            <span class="btn-text">تحليل الصورة</span>
+                            <div class="spinner" style="display: none;"></div>
+                        </button>
+                        <button class="btn btn-secondary" id="clearBtn">مسح الصورة</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection" style="display: none;">
+                <div class="result-card" id="resultCard">
+                    <div class="result-header">
+                        <div class="result-icon" id="resultIcon"></div>
+                        <h2 class="result-title" id="resultTitle"></h2>
+                    </div>
+                    
+                    <div class="confidence-section">
+                        <div class="confidence-label">نسبة الثقة</div>
+                        <div class="confidence-bar-container">
+                            <div class="confidence-bar" id="confidenceBar"></div>
+                        </div>
+                        <div class="confidence-value" id="confidenceValue"></div>
+                    </div>
+
+                    <div class="details-section">
+                        <h3>تفاصيل التحليل</h3>
+                        <div class="detail-grid">
+                            <div class="detail-item">
+                                <div class="detail-label">احتمالية الالتهاب الرئوي</div>
+                                <div class="detail-value" id="pneumoniaProb"></div>
+                            </div>
+                            <div class="detail-item">
+                                <div class="detail-label">احتمالية السلامة</div>
+                                <div class="detail-value" id="normalProb"></div>
+                            </div>
+                        </div>
+                        <div class="diagnosis-box" id="diagnosisBox">
+                            <p class="diagnosis-text" id="diagnosisText"></p>
+                        </div>
+                        <div class="recommendation-box">
+                            <h4>التوصية</h4>
+                            <p id="recommendationText"></p>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-outline" id="newAnalysisBtn">تحليل صورة جديدة</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>هذا النظام للمساعدة في الفحص الأولي فقط ولا يغني عن استشارة الطبيب</p>
+            <p class="tech-info">يعمل بنموذج DenseNet121 المدرب على أكثر من 5000 صورة أشعة</p>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
