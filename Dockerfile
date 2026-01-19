@@ -8,10 +8,6 @@ ENV PYTHONUNBUFFERED=1
 # تعيين مجلد العمل داخل الحاوية
 WORKDIR /app
 
-# تثبيت تبعات النظام اللازمة (إذا لزم الأمر)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
 
 # نسخ ملف المتطلبات وتثبيت التبعات
 COPY requirements.txt .
